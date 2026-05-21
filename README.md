@@ -1,12 +1,24 @@
 # Habitluxe
 
-Premium Habit Tracker built by Yashu Pandey.
+A premium habit tracking web application built using Node.js, Express.js, MongoDB, HTML, CSS and JavaScript.
 
-Features:
-- Habit Tracking
+## Features
 - User Authentication
-- Reminder System
-- MongoDB Database
+- Habit Tracking
+- Daily Streak System
+- Progress Statistics
+- Admin Dashboard
+- Email Notifications
 - Responsive Design
 
-© 2026 Yashu Pandey. All Rights Reserved.
+## Tech Stack
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express.js
+- Database: MongoDB Atlas
+- Deployment: Render
+
+## Live Demo
+https://habitluxe-tracker.onrender.com
+
+## Developer
+Yashu Pandey
