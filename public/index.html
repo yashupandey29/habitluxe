@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitluxe | Premium Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<footer class="copyright">
+    © 2026 Habitluxe. All Rights Reserved.
+    <br>
+    Developed by Yashu Pandey
+</footer>
+
+<body>
+    <!-- Auth Container -->
+    <div class="auth-container" id="authContainer">
+        <div class="auth-bg">
+            <div class="auth-gradient"></div>
+            <div class="auth-pattern"></div>
+        </div>
+
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="logo"><span>Habit</span>luxe</h1>
+                <p class="auth-subtitle">Elevate Your Daily Rituals</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Welcome Back</button>
+                <p class="auth-switch">
+                    New to Habitluxe? <a href="#" onclick="showRegister()">Create Account</a>
+                </p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="registerName" class="form-input" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="registerEmail" class="form-input" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="registerPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Begin Your Journey</button>
+                <p class="auth-switch">
+                    Already have an account? <a href="#" onclick="showLogin()">Sign In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard" id="dashboard" style="display: none;">
+        <header class="header">
+            <div class="container">
+                <div class="header-inner">
+                    <a href="#" class="logo"><span>Habit</span>luxe</a>
+                    <nav class="nav">
+                        <a href="#habits" class="nav-link">Habits</a>
+                        <a href="#sleep" class="nav-link">Sleep</a>
+                        <a href="#stats" class="nav-link">Stats</a>
+                        <a href="#admin" class="nav-link" id="adminLink" style="display: none;">Admin</a>
+                        <div class="user-info">
+                            <div class="user-avatar" id="userAvatar">J</div>
+                            <span class="user-name" id="userName">John</span>
+                            <button class="btn btn-logout" onclick="logout()">Logout</button>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Good <span id="greeting">Morning</span>, <span id="heroName">John</span></h1>
+                    <p class="hero-subtitle">Every small step builds your legacy</p>
+                </div>
+                <div class="hero-date" id="currentDate">Monday, January 1, 2025</div>
+            </div>
+        </section>
+
+        <section class="stats-overview">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-value" id="completedCount">0</div>
+                        <div class="stat-label">Completed Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="streakCount">0</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" id="completionRate">0%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌙</div>
+                        <div class="stat-value" id="avgSleep">--</div>
+                        <div class="stat-label">Avg Sleep</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="habits" class="section">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title"><span class="card-icon">✓</span> Daily Habits</h2>
+                        <span class="card-badge" id="habitsCount">0/0</span>
+                    </div>
+                    <div class="add-habit-form">
+                        <div class="form-row">
+                            <input type="text" id="newHabitName" class="form-input"
+                                placeholder="What habit do you want to build?">
+                            <input type="time" id="habitReminder" class="form-input">
+                        </div>
+                        <button class="btn btn-primary" onclick="addHabit()">Add Habit</button>
+                    </div>
+                    <ul class="habit-list" id="habitList"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sleep" class="section">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title"><span class="card-icon">🌙</span> Sleep Tracker</h2>
+                    </div>
+                    <div class="sleep-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Bedtime</label>
+                                <input type="time" id="sleepTime" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Wake Up</label>
+                                <input type="time" id="wakeTime" class="form-input">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="saveSleep()">Save Sleep Data</button>
+                    </div>
+                    <div class="sleep-stats" id="sleepStats"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="admin" class="section" style="display: none;">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title"><span class="card-icon">👑</span> Admin Panel</h2>
+                    </div>
+                    <button class="btn btn-secondary" onclick="loadAdminData()">Refresh Data</button>
+                    <div class="admin-users" id="adminUsers"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
